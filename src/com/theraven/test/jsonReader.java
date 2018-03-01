@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,14 +17,17 @@ import java.util.Iterator;
  * Created by TheRaven on 2/26/18.
  */
 public class jsonReader extends Thread {
+    public String test;
     public void run(){
+
         System.out.println("Thread his started");
 
         JSONParser parser = new JSONParser();
+        File directory = new File(".");
 
         try {
 
-            Object obj = parser.parse(new FileReader("/home/TheRaven/test.json"));
+            Object obj = parser.parse(new FileReader(""+ directory.getCanonicalPath() + File.separator + "/plugins/test.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             //System.out.println(jsonObject);
@@ -35,7 +39,11 @@ public class jsonReader extends Thread {
             //System.out.println(age);
 
             String ip = (String) jsonObject.get("ip");
-            System.out.println(ip);
+
+            String but = (String) jsonObject.get("if");
+            String tset = but;
+
+
             Bukkit.getServer().broadcastMessage(ip );
 
             // loop array

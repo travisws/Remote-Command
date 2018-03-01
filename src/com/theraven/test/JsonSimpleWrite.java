@@ -3,6 +3,7 @@ package com.theraven.test;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -12,9 +13,13 @@ import java.io.IOException;
 public class JsonSimpleWrite extends Thread {
 
     public void run(){
+
+        File directory = new File(".");
+
         JSONObject obj = new JSONObject();
         obj.put("ip", "192.168.1.4");
         obj.put("age", new Integer(100));
+        obj.put("if", "true");
 
         /*JSONArray list = new JSONArray();
         list.add("msg 1");
@@ -23,7 +28,7 @@ public class JsonSimpleWrite extends Thread {
 
         obj.put("messages", list);*/
 
-        try (FileWriter file = new FileWriter("/home/TheRaven/test.json")) {
+        try (FileWriter file = new FileWriter(""+ directory.getCanonicalPath() + File.separator + "/plugins/test.json")) {
 
             file.write(obj.toJSONString());
             file.flush();
