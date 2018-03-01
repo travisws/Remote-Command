@@ -16,11 +16,13 @@ import java.util.Iterator;
 /**
  * Created by TheRaven on 2/26/18.
  */
-public class jsonReader extends Thread {
+public class jsonReader  {
     public String test;
-    public void run(){
+    public  String hello;
 
-        System.out.println("Thread his started");
+    public void reader(){
+
+        System.out.println("Thread his Json Reader");
 
         JSONParser parser = new JSONParser();
         File directory = new File(".");
@@ -38,13 +40,13 @@ public class jsonReader extends Thread {
           //  long age = (Long) jsonObject.get("age");
             //System.out.println(age);
 
-            String ip = (String) jsonObject.get("ip");
+            //hello = (String) jsonObject.get("ip");
 
-            String but = (String) jsonObject.get("if");
-            String tset = but;
+            hello = (String) jsonObject.get("if");
+          //  hello = but;
 
 
-            Bukkit.getServer().broadcastMessage(ip );
+           // Bukkit.getServer().broadcastMessage(ip );
 
             // loop array
             /*&JSONArray msg = (JSONArray) jsonObject.get("messages");
