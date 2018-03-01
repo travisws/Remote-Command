@@ -4,16 +4,22 @@ package com.theraven; /**
 import com.google.gson.stream.JsonReader;
 import com.theraven.test.JsonSimpleWrite;
 
+import com.theraven.test.ifJson;
 import com.theraven.test.jsonReader;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -26,7 +32,7 @@ import java.io.IOException;
 
 public class Main extends JavaPlugin implements Listener {
 
-    public String test;
+    public String ifjson;
 
     @Override
     public void onEnable() {
@@ -58,9 +64,22 @@ public class Main extends JavaPlugin implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             //event.getPlayer().sendMessage(ChatColor.AQUA + "You clicked a " + ChatColor.BOLD + event.getClickedBlock().getType().toString().toLowerCase().replace("_", ""));
+            ifjson = "0";
+            ifJson ifjson = new ifJson();
+            ifjson.test();
+
         }
 
     }
+    /*For later use for something
+    @EventHandler
+    public void onBreak(BlockPlaceEvent e){
+        Player p = e.getPlayer();
+        Location l = p.getLocation();
+
+        l.getWorld().strikeLightning(l);
+
+    }*/
 
     public void fileCreate(){
         File directory = new File(".");
@@ -75,9 +94,11 @@ public class Main extends JavaPlugin implements Listener {
         if (f.exists()) {
             System.out.println("File existed");
             jsonReader jsonReader = new jsonReader();
-            jsonReader.start();
-            String good = jsonReader.test;
-            System.out.println("Thread his started");
+            jsonReader.reader();
+
+            String good = jsonReader.hello;
+
+            System.out.println("Thread his started" +" " + good + "it worked");
 
 
         } else {
