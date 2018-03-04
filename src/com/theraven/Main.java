@@ -1,33 +1,21 @@
 package com.theraven; /**
  * Created by TheRaven on 2/17/18.
  */
-import com.google.gson.stream.JsonReader;
-import com.theraven.test.JsonSimpleWrite;
+import com.theraven.json.JsonSimpleWrite;
 
-import com.theraven.test.ifJson;
-import com.theraven.test.jsonReader;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import com.theraven.json.ifJson;
+import com.theraven.json.jsonReader;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 public class Main extends JavaPlugin implements Listener {
@@ -102,7 +90,7 @@ public class Main extends JavaPlugin implements Listener {
 
 
         } else {
-            System.out.println("File not found!");
+            System.out.println("File not found! Creating file now!");
             JsonSimpleWrite simpleWrite = new JsonSimpleWrite();
             simpleWrite.start();
         }
