@@ -2,3 +2,8 @@ name: This
 version: 1
 author: The Raven
 main: com.theraven.Main
+
+commands:
+   kit:
+      description: Your description
+      usage: /kit

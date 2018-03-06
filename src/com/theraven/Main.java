@@ -1,11 +1,13 @@
 package com.theraven; /**
  * Created by TheRaven on 2/17/18.
  */
-import com.theraven.json.JsonSimpleWrite;
 
-import com.theraven.json.ifJson;
+import com.theraven.json.JsonSimpleWrite;
 import com.theraven.json.jsonReader;
+import net.minecraft.server.v1_12_R1.ItemStack;
 import org.bukkit.Material;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,18 +29,21 @@ public class Main extends JavaPlugin implements Listener {
         this.getServer().getPluginManager().registerEvents(this, this);
 
         fileCreate();
+
+        this.getCommand("kit").setExecutor(new CommandKit());
+
     }
 
     @Override
-    public void onDisable(){
+    public void onDisable() {
 
     }
 
-    @EventHandler(priority= EventPriority.HIGH)
-    public void onPlayerUse(PlayerInteractEvent event){
+    @EventHandler(priority = EventPriority.HIGH)
+    public void onPlayerUse(PlayerInteractEvent event) {
         Player p = event.getPlayer();
 
-        if(p.getInventory().getItemInMainHand().getType() == Material.BLAZE_POWDER){
+        if (p.getInventory().getItemInMainHand().getType() == Material.BLAZE_POWDER) {
             Fireball fire = p.getWorld().spawn(event.getPlayer().getLocation(), Fireball.class);
             fire.setShooter(p);
         }
@@ -52,13 +57,15 @@ public class Main extends JavaPlugin implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             //event.getPlayer().sendMessage(ChatColor.AQUA + "You clicked a " + ChatColor.BOLD + event.getClickedBlock().getType().toString().toLowerCase().replace("_", ""));
-            ifjson = "0";
+           /* ifjson = "0";
             ifJson ifjson = new ifJson();
-            ifjson.test();
+            ifjson.test();*/
+
 
         }
 
     }
+
     /*For later use for something
     @EventHandler
     public void onBreak(BlockPlaceEvent e){
@@ -69,12 +76,12 @@ public class Main extends JavaPlugin implements Listener {
 
     }*/
 
-    public void fileCreate(){
+    public void fileCreate() {
         File directory = new File(".");
 
         File f = null;
         try {
-            f = new File(""+ directory.getCanonicalPath() + File.separator + "/plugins/test.json");
+            f = new File("" + directory.getCanonicalPath() + File.separator + "/plugins/test.json");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -86,7 +93,7 @@ public class Main extends JavaPlugin implements Listener {
 
             String good = jsonReader.hello;
 
-            System.out.println("Thread his started" +" " + good + "it worked");
+            System.out.println("Thread his started" + " " + good + "it worked");
 
 
         } else {
