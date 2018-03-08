@@ -40,10 +40,14 @@ public class testSocket extends Thread {
             //create ObjectOutputStream object
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
             //write object to Socket
+
+            if (message.equals("Hello")){
+                oos.writeObject("worked from the if side");
+            }
             oos.writeObject("Hi Client "+message);
             //close resources
-            /*ois.close();
-            oos.close();*/
+            ois.close();
+            oos.close();
             socket.close();
             //terminate the server if client sends exit request
             if(message.equalsIgnoreCase("exit")) break;

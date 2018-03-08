@@ -7,9 +7,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class ifJson  {
+public class ifJson {
 
-    public void test(){
+    public void test() {
 
         Main main = new Main();
 
@@ -19,17 +19,14 @@ public class ifJson  {
         JSONObject obj = new JSONObject();
         obj.put("if", "" + main.ifjson);
 
-        try (FileWriter file = new FileWriter(""+ directory.getCanonicalPath() + File.separator + "/plugins/test.json")) {
-
+        try (FileWriter file = new FileWriter("" + directory.getCanonicalPath() + File.separator + "/plugins/test.json")) {
             file.write(obj.toJSONString());
             file.flush();
-
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-       // System.out.print(obj);
+        // System.out.print(obj);
     }
 }

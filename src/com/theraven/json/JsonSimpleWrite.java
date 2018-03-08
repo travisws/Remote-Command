@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class JsonSimpleWrite extends Thread {
 
-    public void run(){
+    public void run() {
 
         File directory = new File(".");
 
@@ -28,7 +28,7 @@ public class JsonSimpleWrite extends Thread {
 
         obj.put("messages", list);*/
 
-        try (FileWriter file = new FileWriter(""+ directory.getCanonicalPath() + File.separator + "/plugins/test.json")) {
+        try (FileWriter file = new FileWriter("" + directory.getCanonicalPath() + File.separator + "/plugins/test.json")) {
 
             file.write(obj.toJSONString());
             file.flush();
@@ -42,4 +42,3 @@ public class JsonSimpleWrite extends Thread {
 
     }
 }
-

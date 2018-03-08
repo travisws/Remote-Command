@@ -16,11 +16,11 @@ import java.util.Iterator;
 /**
  * Created by TheRaven on 2/26/18.
  */
-public class jsonReader  {
+public class jsonReader {
     public String test;
-    public  String hello;
+    public String hello;
 
-    public void reader(){
+    public void reader() {
 
         System.out.println("Thread his Json Reader");
 
@@ -29,7 +29,7 @@ public class jsonReader  {
 
         try {
 
-            Object obj = parser.parse(new FileReader(""+ directory.getCanonicalPath() + File.separator + "/plugins/test.json"));
+            Object obj = parser.parse(new FileReader("" + directory.getCanonicalPath() + File.separator + "/plugins/test.json"));
 
             JSONObject jsonObject = (JSONObject) obj;
             //System.out.println(jsonObject);
@@ -37,16 +37,16 @@ public class jsonReader  {
             /*String name = (String) jsonObject.get("name");
             System.out.println(name);*/
 
-          //  long age = (Long) jsonObject.get("age");
+            //  long age = (Long) jsonObject.get("age");
             //System.out.println(age);
 
             //hello = (String) jsonObject.get("ip");
 
             hello = (String) jsonObject.get("if");
-          //  hello = but;
+            //  hello = but;
 
 
-           // ]Bukkit.getServer().broadcastMessage(ip );
+            // ]Bukkit.getServer().broadcastMessage(ip );
 
             // loop array
             /*&JSONArray msg = (JSONArray) jsonObject.get("messages");
