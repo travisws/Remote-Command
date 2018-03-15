@@ -1,8 +1,6 @@
 package com.theraven;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,19 +11,37 @@ public class testSocket extends Thread {
     //socket server port on which it will listen
     private static int port = 9876;
 
+    Socket s;
+    ServerSocket ss;
+    InputStreamReader isr;
+    BufferedReader br;
+    String message;
+
     public void run(){
-        try {
-            testJoin();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        testJoin();
 
     }
 
-    public void testJoin() throws IOException, ClassNotFoundException{
-        //create the socket server object
+    public void testJoin(){
+        System.out.println("Befor try");
+        try {
+            ss = new ServerSocket(9999);
+            System.out.println("2");
+            while (true){
+                s =ss.accept();
+                isr = new InputStreamReader(s.getInputStream());
+                br = new BufferedReader(isr);
+                message = br.readLine();
+
+                System.out.println(message);
+
+                System.out.println("last");
+
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+     /*   //create the socket server object
         server = new ServerSocket(port);
         //keep listens indefinitely until receives 'exit' call or program terminates
         while(true){
@@ -54,7 +70,7 @@ public class testSocket extends Thread {
         }
         System.out.println("Shutting down Socket server!!");
         //close the ServerSocket object
-        server.close();
+        server.close();*/
     }
 
 }
