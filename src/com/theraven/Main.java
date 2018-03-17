@@ -4,7 +4,8 @@ package com.theraven; /**
 
 import com.theraven.json.JsonSimpleWrite;
 import com.theraven.json.jsonReader;
-import net.minecraft.server.v1_12_R1.ItemStack;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -23,6 +24,7 @@ import java.io.IOException;
 public class Main extends JavaPlugin implements Listener {
 
     public String ifjson;
+    private JavaPlugin plugin = Main.this;
 
     @Override
     public void onEnable() {
@@ -32,12 +34,20 @@ public class Main extends JavaPlugin implements Listener {
 
         this.getCommand("kit").setExecutor(new CommandKit());
 
+        plugin.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "say");
+
+        Bukkit.getServer().dispatchCommand(Bukkit.getConsoleSender(), "kit");
+
     }
 
     @Override
     public void onDisable() {
 
     }
+
+    /*public boolean onCommand (CommandSender sender, Command cmd, String commandLabel, String[] args){
+        return false;
+    }*/
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerUse(PlayerInteractEvent event) {
@@ -60,7 +70,7 @@ public class Main extends JavaPlugin implements Listener {
            /* ifjson = "0";
             ifJson ifjson = new ifJson();
             ifjson.test();*/
-
+           plugin.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "say hello");
 
         }
 
